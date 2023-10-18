@@ -38,7 +38,7 @@ bot.command('help', (ctx) => {
     /b - Presses B
     /l - Presses R
     /r - Presses L
-    /start - Presses START
+    /starts - Presses START
     /select - Presses SELECT
     /up - Presses UP
     /down - Presses DOWN
@@ -94,7 +94,7 @@ bot.command(['a', 'b', 'l', 'r', 'start', 'select', 'up', 'down', 'left', 'right
           keypad.press(keypad.SELECT)
           updateScreen(0, ctx, true);
         break;
-      case 'stat':
+      case 'starts':
           keypad.press(keypad.START)
           updateScreen(0, ctx, true);
         break;
