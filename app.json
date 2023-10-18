@@ -1,19 +1,11 @@
 {
     "name": "PokeHexa",
-    "description": "Pokemon Discord GBA Game Play.",
+    "description": "Pokemon Telegram GBA Game Play.",
     "logo": "https://telegra.ph/file/ca3cf548781f0f8007a0e.jpg",
-    "repository": "https://github.com/MoeZilla/pokehexa",
+    "repository": "https://github.com/MoeZilla/pokehexa-telegram",
     "env": {
-        "HEXA_TOKEN": {
-            "description": "Your Discord token for the bot",
-            "required": true
-        },
-        "HEXA_ROOM": {
-            "description": "your Discord channel id",
-            "required": true
-        },
-        "OWNER": {
-            "description": "your Discord account  id",
+        "BOT_TOKEN": {
+            "description": "Your telegram token for the bot",
             "required": true
         }
     },
