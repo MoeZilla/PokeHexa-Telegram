@@ -4,7 +4,24 @@ const moment = require('moment');
 const fs = require('fs');
 const fse = require('fs-extra');
 
-
+var GameBoyAdvance = require('gbajs');
+ 
+var gba = new GameBoyAdvance();
+ 
+gba.logLevel = gba.LOG_ERROR;
+ 
+var biosBuf = fs.readFileSync('./node_modules/gbajs/resources/bios.bin');
+gba.setBios(biosBuf);
+gba.setCanvasMemory();
+ 
+gba.loadRomFromFile('./hexa.gba', function (err, result) {
+  if (err) {
+    console.error('loadRom failed:', err);
+    process.exit(1);
+  }
+  gba.loadSavedataFromFile('./hexa.sav');
+  gba.runStable();
+});
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
@@ -33,10 +50,63 @@ bot.command('help', (ctx) => {
   ctx.reply(helpMessage);
 });
 
+
+
 bot.command(['a', 'b', 'l', 'r', 'start', 'select', 'up', 'down', 'left', 'right'], (ctx) => {
+  var keypad = gba.keypad
+  var idx = 0;
   const command = ctx.message.text.substr(1); // Remove the leading slash
   // Process the command and update the screen
-  updateScreen(0, ctx, true);
+  switch (command) {
+      case 'a':
+          keypad.press(keypad.A)
+          updateScreen(0, ctx, true);
+        break;
+      case 'b':
+          keypad.press(keypad.B)
+          updateScreen(0, ctx, true);
+        break;
+      case 'l':
+          keypad.press(keypad.L)
+          updateScreen(0, ctx, true);
+        break;
+      case 'r':
+          keypad.press(keypad.R)
+          updateScreen(0, ctx, true);
+        break;
+      case 'up':
+          keypad.press(keypad.UP)
+          updateScreen(0, ctx, true);
+        break;
+      case 'down':
+          keypad.press(keypad.DOWN)
+          updateScreen(0, ctx, true);
+        break;
+      case 'left':
+          keypad.press(keypad.LEFT)
+          updateScreen(0, ctx, true);
+        break;
+      case 'right':
+          keypad.press(keypad.right)
+          updateScreen(0, ctx, true);
+        break;
+      case 'select':
+          keypad.press(keypad.SELECT)
+          updateScreen(0, ctx, true);
+        break;
+      case 'stat':
+          keypad.press(keypad.START)
+          updateScreen(0, ctx, true);
+        break;
+      case 'right':
+          keypad.press(keypad.right)
+          updateScreen(0, ctx, true);
+        break;
+        default:
+          console.log(`Incorrect input: ${command}`);
+        break;
+      }
+      
 });
 
 bot.command('screen', (ctx) => {
@@ -52,7 +122,7 @@ function updateScreen(idx, ctx, d) {
     var png = gba.screenshot();
     png.pack().pipe(fs.createWriteStream('gba' + idx + '.png'));
     setTimeout(() => {
-      ctx.replyWithPhoto({ source: './hexa.png' }, { caption: 'Current Screen' });
+      ctx.replyWithPhoto({ source: './gba0.png' }, { caption: 'Current Screen' });
     }, 250);
   }, delay);
 }
