@@ -1,21 +1,18 @@
 <img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="PokeHexa" src="https://telegra.ph/file/ca3cf548781f0f8007a0e.jpg?size=256"> 
 
 # PokeHexa ✨
-[![Run on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/MoeZilla/PokeHexa.git) 
-[![Run on Repl.it](https://repl.it/badge/github/Red-Aura/PokeHexa)](https://repl.it/github/MoeZilla/PokeHexa)
-[![](https://img.shields.io/badge/discord.js-v12.0.0--dev-blue.svg?logo=npm)](https://github.com/discordjs)
->  PokeHexa Discord.js For Free.
+[![Run on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/MoeZilla/PokeHexa-Telegram.git) 
 
-PokeHexa is a open source Discord bot coded in JavaScript with [Discord.js](https://discord.js.org) by [RedAura](https://github.com/MoeZilla).  
+
+
+PokeHexa is a open source Discord bot coded in JavaScript with Telegraf by [RedAura](https://github.com/MoeZilla).  
 ```
 - `npm install`
 - Put your GBA rom named `hexa.gba` in `./`
 - Put your GBA save named `hexa.sav` in `./`
 - Prepare your `.env` file
 
-HEXA_TOKEN=<not token>
-OWNER=<your id>
-HEXA_ROOM=<discord channel id>
+BOT_TOKEN=<not token>
   
 ```
 Thank You Nintendo 
